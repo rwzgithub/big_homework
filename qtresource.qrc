@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/new/picture">
+        <file>pictures/bullet.png</file>
+        <file>pictures/tower1.jpg</file>
+        <file>pictures/backg.jpg</file>
+    </qresource>
+</RCC>
