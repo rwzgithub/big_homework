@@ -20,6 +20,8 @@ SOURCES += \
     enemy.cpp \
     main.cpp \
     mainwindow.cpp \
+    new_window.cpp \
+    new_window_defeat.cpp \
     rpgobj.cpp \
     tower.cpp
 
@@ -27,11 +29,15 @@ HEADERS += \
     bullet.h \
     enemy.h \
     mainwindow.h \
+    new_window.h \
+    new_window_defeat.h \
     rpgobj.h \
     tower.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    new_window.ui \
+    new_window_defeat.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

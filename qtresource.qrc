@@ -3,5 +3,8 @@
         <file>pictures/bullet.png</file>
         <file>pictures/tower1.jpg</file>
         <file>pictures/backg.jpg</file>
+        <file>pictures/enemy1.jpg</file>
+        <file>pictures/victory.jpg</file>
+        <file>pictures/defeat.jpg</file>
     </qresource>
 </RCC>

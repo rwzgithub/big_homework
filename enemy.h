@@ -9,24 +9,33 @@ using namespace  std;
 class enemy
 {
 public:
-    enemy(QPoint p,QImage i);
-    ~enemy();
+    enemy(QPoint p,QImage enemypic = QImage(":/new/picture/pictures/enemy1.jpg"));
+    ~enemy()
+    {}
     void get_hurt();
     bool alive();
-    int getX();
-    int getY();
-    int getHeight();
-    int getWidth();
 
+    QPoint get_pos()
+    {
+        return this->pos;
+    }
+    QImage get_pic()
+    {
+        return this->_pic;
+    }
+    int times=0;//用于记录怪物产生的时间长短，可以控制怪物前进
+    QPoint pos;//敌人坐标
+    int blood = 10;//敌人血量
 private:
 
-    QPoint pos;//敌人坐标
-    int e_width,e_height;//敌人宽高
+
+
     QImage _pic;
     int id;//敌人编号
-    int blood;//敌人血量
+
     int speed;//敌人速度
     int bonus;//击杀奖励
+
 };
 
 #endif // ENEMY_H
