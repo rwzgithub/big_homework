@@ -57,15 +57,15 @@ private:
     static const int COOL_TIME = 100;//冷却时间
     static const int _CT = 2;//冷却时间减少量
     QMediaPlayer *player;
-
+    int now_money=100;
+    QString money_str = QString::number(now_money);
     int back_y[5]={4,108,212,316,420};//每条道路的y坐标，用于怪物的出现
 
     int timeID;
     int timeID1;
     int timeID2;
     int timeID3;
-    int money=100;
-    QString m=QString::number(money);
+
     //计时器
     int power1 = 2;//第一种子弹的伤害
     int tower_power = 2;//怪物吃塔要承受的伤害

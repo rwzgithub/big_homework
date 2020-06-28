@@ -37,7 +37,7 @@ private:
     QTimer * timer;
      //   int damage;//塔伤，第一阶段先不考虑
 
-    int cost = 10;
+    int cost = 15;
     int towards;
 
 };

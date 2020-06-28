@@ -12,6 +12,7 @@
 #include "enemy_hp.h"
 #include <QSound>
 #include<QMediaPlayer>
+#include <QRect>
 #define PI 3.1415926
 #define target_num 20
 using namespace std;
@@ -24,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     player = new QMediaPlayer;
-    player->setMedia(QUrl("qrc:/new/music/bjms/backg1.mp3"));
+    player->setMedia(QUrl("qrc:/new/music/bjms/background.mp3"));
     player->setVolume(30);
 
        player->play();
@@ -49,8 +50,16 @@ void MainWindow::paintEvent(QPaintEvent *)
     if(over == false)
     {
         p->drawPixmap(rect(),QPixmap(":/new/picture/pictures/backg.jpg"));
+
         p->drawPixmap(0,50,QPixmap(":/new/picture/pictures/tower1.jpg"));
         p->drawPixmap(0,150,QPixmap(":/new/picture/pictures/bomb.jpg"));
+        p->drawPixmap(0,0,QPixmap(":/new/picture/pictures/money.png"));
+        p->drawPixmap(100,100,QPixmap(":/new/picture/pictures/tower_cost.png"));
+        p->drawPixmap(100,200,QPixmap(":/new/picture/pictures/bomb_cost.png"));
+        QFont f;
+        f.setPointSize(20);
+        p->setFont(f);
+        p->drawText(130,40,money_str);
 
 //画出炸弹
         for(int i=0;i<bombs.size();i++)
@@ -77,6 +86,8 @@ void MainWindow::paintEvent(QPaintEvent *)
                         {
                             killed_num ++;
                             cout<<"kill "<<killed_num<<endl;
+                            now_money=now_money+enemies[k]->get_bonus();
+                            money_str = QString::number(now_money);
                             enemies.removeAt(k);
                             hps.removeAt(k);
                             kill_enemy = true;
@@ -136,6 +147,8 @@ void MainWindow::paintEvent(QPaintEvent *)
                         {
                             killed_num ++;
                             cout<<"kill "<<killed_num<<endl;
+                            now_money=now_money+enemies[k]->get_bonus();
+                            money_str = QString::number(now_money);
                             enemies.removeAt(k);
                             hps.removeAt(k);
                             kill_enemy = true;
@@ -211,18 +224,38 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     int x = event->x();
     int y = event->y();
 
-    if(x<=100&&x>=0&&y>=50&&y<=150)
+    if(x<=100&&x>=0&&y>=50&&y<=150&&now_money>=15)
     {
 
         touch=1;
         choose0=1;
     }//如果点到范围内，那么就是选中
-    else if(x<=100&&x>=0&&y>=150&&y<=250)
+    else if(x<=100&&x>=0&&y>=50&&y<=150&&now_money<15)
+    {
+        player= new QMediaPlayer;
+        player->setMedia(QUrl("qrc:/new/music/bjms/error3.mp3"));
+        player->setVolume(30);
+
+           player->play();
+           touch=0;
+           choose0=0;
+    }
+    else if(x<=100&&x>=0&&y>=150&&y<=250&&now_money>=30)
     {
 
         touch=1;
         choose0=2;
     }//如果点到范围内，那么就是选中
+    else if(x<=100&&x>=0&&y>=150&&y<=250&&now_money<30)
+    {
+        player = new QMediaPlayer;
+        player->setMedia(QUrl("qrc:/new/music/bjms/error3.mp3"));
+        player->setVolume(30);
+
+           player->play();
+           touch=0;
+           choose0=0;
+    }
     else{
         touch=0;
         choose0=0;
@@ -268,18 +301,23 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
             Tower _tower(a1);
             towers.push_back(_tower);
-
+            now_money=now_money-15;
+            money_str = QString::number(now_money);
             settled = 1;
         }
+
        else if(choose0==2)
         {
             QPoint a1(cur.x(),cur.y());
 
             bomb _bomb(a1);
             bombs.push_back(_bomb);
+            now_money=now_money-30;
+            money_str = QString::number(now_money);
             settled = 1;
 
         }
+
         //qDebug()<<cur.x()<<cur.y();
     }
 
