@@ -1,6 +1,9 @@
 #include "enemy.h"
-
-enemy::enemy(QPoint p,QImage i):pos(p),_pic(i)
+#include <QMediaPlayer>
+enemy::enemy(QPoint p,QImage i,int _blood,int _bonus):pos(p),_pic(i)
 {
+    this->full_blood = _blood;
+    this->blood = _blood;
+    this->bonus = _bonus;
 }
 

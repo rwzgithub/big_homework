@@ -7,7 +7,7 @@
 class Tower
 {
 public:
-    Tower(QPoint p,QImage pi=QImage(":/new/picture/pictures/tower1.jpg"));//引入图片
+    Tower(QPoint p,QImage pi= QImage(":/new/picture/pictures/tower1.jpg"));//引入图片
 
     ~Tower(){}//塔的析构
 
@@ -17,7 +17,10 @@ public:
 
     QImage getPic(){return pic;}//得到绘图
 
-
+    int get_cost()
+    {
+        return this->cost;
+    }
 //以下变量先放在public里方便使用，后期慢慢改
 
     QList <Bullet> bullets;//子弹列表
@@ -34,7 +37,7 @@ private:
     QTimer * timer;
      //   int damage;//塔伤，第一阶段先不考虑
 
-    int cost;
+    int cost = 10;
     int towards;
 
 };

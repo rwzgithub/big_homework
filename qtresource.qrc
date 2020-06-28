@@ -6,5 +6,17 @@
         <file>pictures/enemy1.jpg</file>
         <file>pictures/victory.jpg</file>
         <file>pictures/defeat.jpg</file>
+        <file>pictures/enemy2.jpg</file>
+        <file>pictures/boss.jpg</file>
+        <file>pictures/bomb.jpg</file>
+        <file>pictures/if_bombed.jpg</file>
+        <file>pictures/bcg.jpg</file>
+        <file>pictures/blood_above.png</file>
+        <file>pictures/blood_below.png</file>
+    </qresource>
+    <qresource prefix="/new/music">
+        <file>bjms/backg1.mp3</file>
+        <file>bjms/defeat.mp3</file>
+        <file>bjms/victory.mp3</file>
     </qresource>
 </RCC>

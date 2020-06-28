@@ -1,5 +1,5 @@
 QT       += core gui
-
+QT       += multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -16,22 +16,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bomb.cpp \
+    boss.cpp \
     bullet.cpp \
     enemy.cpp \
+    enemy1.cpp \
+    enemy2.cpp \
+    enemy_hp.cpp \
     main.cpp \
     mainwindow.cpp \
     new_window.cpp \
     new_window_defeat.cpp \
-    rpgobj.cpp \
     tower.cpp
 
 HEADERS += \
+    bomb.h \
+    boss.h \
     bullet.h \
     enemy.h \
+    enemy1.h \
+    enemy2.h \
+    enemy_hp.h \
     mainwindow.h \
     new_window.h \
     new_window_defeat.h \
-    rpgobj.h \
     tower.h
 
 FORMS += \

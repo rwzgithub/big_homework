@@ -4,12 +4,13 @@
 #include <string>
 #include <QImage>
 #include <QPoint>
+#include <QMediaPlayer>
 using namespace  std;
 
 class enemy
 {
 public:
-    enemy(QPoint p,QImage enemypic = QImage(":/new/picture/pictures/enemy1.jpg"));
+    enemy(QPoint p,QImage enemypic,int _blood,int _bonus);// = QImage(":/new/picture/pictures/enemy1.jpg")
     ~enemy()
     {}
     void get_hurt();
@@ -23,13 +24,21 @@ public:
     {
         return this->_pic;
     }
+    void set_pos(QPoint p)
+    {
+        this->pos = p;
+    }
     int times=0;//用于记录怪物产生的时间长短，可以控制怪物前进
     QPoint pos;//敌人坐标
-    int blood = 10;//敌人血量
+    int blood;//敌人血量
+    int full_blood;
+    int get_bonus()
+    {
+        return this->bonus;
+    }
+
+
 private:
-
-
-
     QImage _pic;
     int id;//敌人编号
 

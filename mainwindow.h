@@ -11,6 +11,13 @@
 #include <QList>
 #include "new_window.h"
 #include "new_window_defeat.h"
+#include "enemy1.h"
+#include "enemy2.h"
+#include "boss.h"
+#include "bomb.h"
+#include "enemy_hp.h"
+#include <QMediaPlayer>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,19 +42,21 @@ protected:
 private:
     Ui::MainWindow *ui;
     bool touch;//是否触碰塔
-    bool choose0;//是否选中塔
+    int choose0;//是否选中塔
     bool newWindow_painted = false;//是否已经绘制了新窗口
     QPoint cur;//current即当前鼠标坐标
     int killed_num = 0;//记录击杀怪物数
     int printed_num = 0;//记录出现怪物数
     QList <Tower> towers;//炮塔的列表
-    QList <enemy> enemies;//怪物的列表
-
+    QList <bomb> bombs;//炸弹列表
+    QList <enemy*> enemies;//怪物的列表
+    QList <enemy_hp*> hps;//血条的列表
+    enemy_hp* thp;
     static const int HARF_LENTH = 50;
     static const int HEIGHT = 100;
     static const int COOL_TIME = 100;//冷却时间
     static const int _CT = 2;//冷却时间减少量
-
+    QMediaPlayer *player;
 
     int back_y[5]={4,108,212,316,420};//每条道路的y坐标，用于怪物的出现
 
@@ -55,14 +64,17 @@ private:
     int timeID1;
     int timeID2;
     int timeID3;
+    int money=100;
+    QString m=QString::number(money);
     //计时器
     int power1 = 2;//第一种子弹的伤害
     int tower_power = 2;//怪物吃塔要承受的伤害
     int nowX;
     int nowY;//鼠标现在坐标
     bool settled;
-    bool win;//是否胜利
-    bool over;//是否结束
+    bool win=false;//是否胜利
+    bool over=false;//是否结束
     bool stop_print_enemy = false;//不再出现怪物
+    bool boss_printed = false;//不再出现boss
 };
 #endif // MAINWINDOW_H
